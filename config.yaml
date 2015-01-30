@@ -1,0 +1,42 @@
+# -------- Configuration for recommender.py -------- #
+#                                                    #
+#   Please refer to the README for more information  #
+# about some attributes before modifying this file.  #
+#                                                    #
+#   Author: Shraman Ray Chaudhuri                    #
+#                                                    #
+#                                                    #
+#   Property of Amplify Access                       #
+#                                                    #
+#   January 30, 2015                                 #
+#                                                    #   
+# -------------------------------------------------- #
+
+metrics:
+    # Relative path to raw metrics data
+    file_path: "historic_app_metrics_072011.json"
+
+    # Path to user ID in JSON dictionary (see README)
+    path_to_userid: ["d","user_id"]
+
+    # Path to app ID (name) in JSON dictionary (see README)
+    path_to_appid: ["d","name"]
+
+
+spark:
+    app_name: "AmplifyMarketRecommender"
+
+    # Number of total Spark threads ("workers")
+    num_threads: 10
+
+    # Number of Spark tasks for each RDD transform (where applicable)
+    #   By default, Spark uses only 8
+    num_tasks: 8
+
+ALS:
+    # The number of singular values (salient features) of
+    #   the user-app 'rating' matrix
+    num_features: 10
+
+    # Iterations of the ALS algorithm
+    num_ALS_iterations: 20
