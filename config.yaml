@@ -16,10 +16,10 @@ metrics:
     # Relative path to raw metrics data
     file_path: "historic_app_metrics_072011.json"
 
-    # Path to user ID in JSON dictionary (see README)
+    # Path to user ID in JSON dictionary
     path_to_userid: ["d","user_id"]
 
-    # Path to app ID (name) in JSON dictionary (see README)
+    # Path to app ID (name) in JSON dictionary
     path_to_appid: ["d","name"]
 
 
