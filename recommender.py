@@ -35,7 +35,7 @@ def userAppJSONParser(line):
 
     # Translate app name to app ID
     global appCounter
-    if flatJSON["app_id"] not in appCodes:
+    if flatJSON["app_id"] not in appsToCodes:
         appsToCodes[flatJSON["app_id"]] = appCounter
         codesToApps[appCounter] = flatJSON["app_id"]
         appCounter += 1
@@ -99,7 +99,7 @@ def recommendApps(user_id, model, ratingRDD, N):
 
     # Only consider apps which haven't been downloaded
     oldApps = set(ratingRDD.filter(lambda p: p[0] == user_ID).map(lambda p: int(p[1])).collect())
-    appsToPredict = [(user_ID, appCode) for appCode in codesToApps.keys() if appCode not in oldApps]
+    appsToPredict = sc.parallelize([(user_ID, appCode) for appCode in codesToApps.keys() if appCode not in oldApps])
 
     # Predict the "ratings", sort them in descending order, and return the first N (or all, if N > # apps)
     predictions = model.predictAll(appsToPredict)\
@@ -131,9 +131,8 @@ if __name__ == "__main__":
     # Take command line arguments for:
     #   [0]: number of apps desired
     #   [1:]: user_id's for whom to generate recommendations
-    if len(sys.argv) == 0
-    if len(sys.argv) > 0:
-        n = sys.argv[0]
-
+    if len(sys.argv) < 2:
+        print "First argument must be number of apps to return\n" + "Second argument must be a user ID"
+        sys.exit()
     for user_id in sys.argv[1:]:
-        print recommendApps(user_id, model, ratingRDD, )
+        print recommendApps(user_id, model, ratingRDD, sys.argv[0])
