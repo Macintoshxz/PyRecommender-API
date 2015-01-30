@@ -11,8 +11,8 @@ Author: Shraman Ray Chaudhuri (Extern, January 2015), MIT Class of 2017
 Mentor: Joe Quadrino
 ## Before You Get Started
  - Ensure the following are installed on your system:
-  - Scala
-  - Python
+       - Scala
+       - Python
  - Run `pip install requirements.txt`
  - Download Apache Spark for your machine (https://spark.apache.org/downloads.html)
  - If running on a cluster, be sure to get `data-emr-key.pem` for access privileges (from Joe)
