@@ -32,5 +32,11 @@ Mentor: Joe Quadrino
 - The number of top-rated apps you'd like to view
 - Any number of valid user ID's to query results for
 **Example**: `$ ./recommender.py 5 123456 789100` will return the top `5` recommendations for users `123456` and `789100`.
+### TODO/Bugs
+- The `sortedByKey` function call is running into an error in the `recommendApps` function. If we switch to Spark SQL to post-process the RDDs, this may be a non-issue.
+    - Once this bug is resolved, there may be other transformations in `recommendApps` (on the final line to return predictions) -- once these RDD operations are fixed, the script should run smoothly
+- We have yet to experiment with current data (the historic data is quite old)
+- We may want to integrate teacher ratings in the algorithm
+- We may want to separate out different distributions (grade, school, district, class, etc.) to get better results
 ### Version
 0.0.1
