@@ -23,11 +23,13 @@ Currently, the only metric we use to determine a "rating" is the number of insta
 - `num_tasks`: Indicates the number of threads Spark will use to sort/group RDDs (see above)
 - `num_features`: This attribute is analogous to the rank of the matrix we choose. We reduce the rank of our matrix to compress data, keeping only the most salient features; however, the lower the number, the less accurate the matrix factorization will be in estimating the actual rating matrix. The larger the number, we lose memory and efficiency. Experiment with this number to find optimal accuracy when predicting recommendations. If using a kernel, add the number of extra dimensions to this number.
 - `num_ALS_iterations`: The number of times the Alternating Least Squares algorithm will run. Running it too many times will slow runtime as well as overfit data.
+
 ### Running the script
 `recommender.py` is an executable script. Simply run `$  ./recommender.py` on the command line with the following arguments:
 - The number of top-rated apps you'd like to view
 - Any number of valid user ID's to query results for
     * Example: `$ ./recommender.py 5 123456 789100` will return the top `5` recommendations for users `123456` and `789100`.
+
 ### TODO/Bugs
 - The `sortedByKey` function call will run into an error in the `recommendApps` function. If we switch to Spark SQL to post-process the RDDs, this may be a non-issue.
     - Once this bug is resolved, fix other transformation errors on the RDD in `recommendApps`
@@ -38,5 +40,6 @@ Currently, the only metric we use to determine a "rating" is the number of insta
 - Experiment with PCA/SVD techniques for online learning
 - Separate out different distributions (e.g. grade, school, district, class, etc.) using SparkSQL to get better results
 - Data visualization instead of command line outputs
+
 ### Version
 0.0.1
