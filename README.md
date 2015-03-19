@@ -16,7 +16,7 @@ Currently, the only metric we use to determine a "rating" is the number of insta
 ## Setting up `config.yaml`
 - `file_path`: This should be the path to your properly formatted metrics data in a JSON file. **Note**: Depending on your cluster, the absolute path to the metrics should be preceded by the appropriate filesystem prefix (e.g. Amazon S3 uses `s3://`, HDFS uses `file://`, etc.)
 - `path_to_userid`: Each properly formatted app metric should contain some sort of integer user ID. Since JSON metric data may be formatted differently as time goes on, you should specify the nested "path" (in the JSON object) to the user ID attribute.
-        * Example: If your JSON metrics are formatted as such:
+    - Example: If your JSON metrics are formatted as such:
  `{"d":{"user_id": 001, "otherData": 123,...}...}` then you should put `["d", "user_id"]` for this field since `user_id` is nested under `d`.
 - `path_to_appid`: Each properly formatted app metric should contain some sort of app ID (for now, it is a String). See above for information about this field.
 - `num_threads`: This indicates how many threads Spark will use to run parallel computations on your data. The larger the number, the more efficient execution, at the cost of power and memory. If running on a large cluster, consider making this number larger.
