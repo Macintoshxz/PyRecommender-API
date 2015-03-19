@@ -27,7 +27,7 @@ Currently, the only metric we use to determine a "rating" is the number of insta
 `recommender.py` is an executable script. Simply run `$  ./recommender.py` on the command line with the following arguments:
 - The number of top-rated apps you'd like to view
 - Any number of valid user ID's to query results for
-**Example**: `$ ./recommender.py 5 123456 789100` will return the top `5` recommendations for users `123456` and `789100`.
+    * Example: `$ ./recommender.py 5 123456 789100` will return the top `5` recommendations for users `123456` and `789100`.
 ### TODO/Bugs
 - The `sortedByKey` function call will run into an error in the `recommendApps` function. If we switch to Spark SQL to post-process the RDDs, this may be a non-issue.
     - Once this bug is resolved, fix other transformation errors on the RDD in `recommendApps`
