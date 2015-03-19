@@ -1,4 +1,4 @@
-# Marketplace Recommendation Engine (Work In Progress)
+# Marketplace Recommendation Engine API (Work In Progress)
 
 A recommender API (for cluster computing) created for the Amplify Marketplace to recommend apps to users based on a machine learning technique called Collaborative Filtering with Alternating Least Squares (a process to fill in missing entries in a "User-App" rating matrix to estimate a user's affinity for an app). This project heavily relies on Spark and builds on principles of distributed computation. This project was deployed on AWS EC2 servers, but the API allows for portability to other services (see below).
 
@@ -25,7 +25,7 @@ Currently, the only metric we use to determine a "rating" is the number of insta
 - `num_ALS_iterations`: The number of times the Alternating Least Squares algorithm will run. Running it too many times will slow runtime as well as overfit data.
 
 ### Running the script
-`recommender.py` is an executable script. Simply run `$  ./recommender.py` on the command line with the following arguments:
+`recommender.py` is an executable. Simply run `$  ./recommender.py` on the command line with the following arguments:
 - The number of top-rated apps you'd like to view
 - Any number of valid user ID's to query results for
     * Example: `$ ./recommender.py 5 123456 789100` will return the top `5` recommendations for users `123456` and `789100`.
